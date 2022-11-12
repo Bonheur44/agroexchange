@@ -56,6 +56,24 @@ class ConsumerController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    #[Route('/consumer/product-details/{id}', name: 'consumer-product-details')]
+    public function productDetails(int $id, CategoryRepository $catRepo, ProductRepository $prodRepo, Request $req) : Response
+    {
+        $consumerId = $req->getSession()->get('consumerId');
+        if (!isset($consumerId)) return $this->redirectToRoute('homepage');
+        $categories = (new CategoryController())->fetchCategories($catRepo);
+
+        $prodManager = new ProductController();
+        $product = $prodManager->fetchOne($prodRepo, $id);
+        if ($product == null) return $this->redirectToRoute('consumer-products');
+        $relatedProducts = $prodRepo->related($product->getCategoryId(), $product->getId());
+        return $this->render('consumer/product-details.html.twig', [
+            'categories' => $categories,
+            'product' => $product,
+            'relatedProducts' => $relatedProducts,
+        ]);
+    }
     // #[Route('/test/{id}')]
     // public function test($id, ManagerRegistry $doctrine)
     // {

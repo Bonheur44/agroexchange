@@ -1,130 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'headerConsumer.html.twig' %}
 
 {% block title %}AgroExchange - Accueil{% endblock %}
 
 {% block body %}
-    <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
-    <div class="humberger__menu__wrapper">
-        <div class="humberger__menu__logo">
-            <a href="#"><img src={{ asset('img/logo.png') }} alt="AgroExchange"></a>
-        </div>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">
-                <!-- item: <span>$150.00</span> -->
-            </div>
-        </div>
-        <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="./index.html">Accueil</a></li>
-                <li><a href="#">Commandes </a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Terminées</a></li>
-                        <li><a href="./shoping-cart.html">En attente</a></li>
-                        <li><a href="./checkout.html">Suspendues</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Mon compte </a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Paramètres</a></li>
-                        <li><a href="" class="logout">Déconnexion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> agroexchange2@gmail.com</li>
-                <li>Livraison sécurisée</li>
-            </ul>
-        </div>
-    </div>
-    <!-- Humberger End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header__top__left">
-                            <ul>
-                                <li><i class="fa fa-envelope"></i> agroexchange2@gmail.com</li>
-                                <li>Livraison sécurisée</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src={{ asset('img/logo.png') }} alt="AgroExchange"></a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="./index.html">Accueil</a></li>
-                            <li><a href="#">Commandes 
-                                <span class="arrow_carrot-down"></span></a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Terminées</a></li>
-                                    <li><a href="./shoping-cart.html">En attente</a></li>
-                                    <li><a href="./checkout.html">Suspendues</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Mon compte
-                                <span class="arrow_carrot-down"></span></a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Paramètres</a></li>
-                                    <li><a href="" class="logout">Déconnexion</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> <span>3</span></a></li>
-                        </ul>
-                        <div class="header__cart__price">
-                            <!-- item: <span>$150.00</span> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="humberger__open">
-                <i class="fa fa-bars"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
@@ -193,7 +71,7 @@
     <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-5">
+                <div class="col-lg-3 col-md-3">
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Catégories</h4>
@@ -251,21 +129,22 @@
                     </div>
                     <div class="row">
                         {% if products %}
+                            {% for product in products %}
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg={{ asset('img/product/product-1.jpg') }}>
+                                <div class="product__item__pic set-bg" data-setbg={{ asset(product.image) }}>
                                     <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li><a href="/consumer/product-details/{{product.id}}"><i class="fa fa-plus"></i></a></li>
+                                        <li><a href="" class="consumerAddToCart" id="{{product.id}}"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h6><a href="/consumer/product-details/{{product.id}}">{{ product.name }}</a></h6>
+                                    <h5>{{ product.price }} FCFA</h5>
                                 </div>
                             </div>
                         </div>
+                            {% endfor %}
                         {% endif %}
                     </div>
                     <div class="product__pagination">
@@ -283,4 +162,5 @@
 
 {% block additionnal_javascripts %}
     <script src={{ asset('js/login.js') }}></script>
+    <script src={{ asset('js/cart.js') }}></script>
 {% endblock %}

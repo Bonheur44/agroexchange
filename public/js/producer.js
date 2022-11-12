@@ -17,6 +17,7 @@
 	   	fd.append('unit', $("#unit").val());
 	   	fd.append('qty', $("#quantity").val());
 	   	fd.append('image', $('#image')[0].files[0]);
+	   	fd.append('desc', $("#description").val());
 
 	   	$.ajax({
             type: 'POST',
@@ -27,12 +28,12 @@
 		  	success: function (res) {
                 const p = $('.addProduct .err');
                 ring.css('display', 'none');
-                for (let i = 0; i <= 7; i++) {
+                for (let i = 0; i < 8; i++) {
                     p[i].innerHTML = res[i];
                 }
-                if (res.res) {
-                    $('.addProduct .alert').addClass('alert-success');
-                }
+                if (res.res) $('.addProduct .alert').addClass('alert-success');
+                else $('.addProduct .alert').removeClass('alert-success');
+                
                 $('.addProduct .alert').html(res.res);
 			},
 	   	});

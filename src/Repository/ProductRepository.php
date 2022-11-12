@@ -39,6 +39,15 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function related($category, $id = null)
+    {
+        $qb = $this->createQueryBuilder('p')->where('p.categoryId = '.$category)->setMaxResults(4);
+
+        ($id != null) ? $qb->andWhere('p.id != '.$id):'';
+
+        return $qb->getQuery()->execute();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

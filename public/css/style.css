@@ -1708,6 +1708,7 @@ ol {
 
 .product__details__pic__item img {
 	min-width: 100%;
+	/* height: 330; */
 }
 
 .product__details__pic__slider img {
@@ -1750,10 +1751,13 @@ ol {
 	margin-bottom: 45px;
 }
 
-.product__details__text .primary-btn {
+.product__details__text .primary-btn,
+.product__details__text .primary-btn:hover,
+.product__details__text .primary-btn:active {
 	padding: 16px 28px 14px;
 	margin-right: 6px;
 	margin-bottom: 5px;
+	color: #fff;
 }
 
 .product__details__text .heart-icon {

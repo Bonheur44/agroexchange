@@ -41,6 +41,9 @@ class Product
     #[ORM\Column]
     private ?int $status = null;
 
+    #[ORM\Column]
+    private ?int $producerId = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Product
     public function setUnit(string $unit): self
     {
         $this->unit = $unit;
+
+        return $this;
+    }
+
+    public function getProducerId(): ?int
+    {
+        return $this->producerId;
+    }
+
+    public function setProducerId(int $producerId): self
+    {
+        $this->producerId = $producerId;
 
         return $this;
     }
